@@ -1,9 +1,17 @@
+import scala.collection.mutable.ArrayBuffer
+
 object Strain {
   def keep[T](input: Seq[T], predicate: (T) => Boolean): Seq[T] = {
-    input.filter(predicate)
+    val output = ArrayBuffer[T]()
+    for (item <- input)
+      if (predicate(item)) output += item
+    output
   }
 
   def discard[T](input: Seq[T], predicate: (T) => Boolean): Seq[T] = {
-    input.filterNot(predicate)
+    val output = ArrayBuffer[T]()
+    for (item <- input)
+      if (!predicate(item)) output += item
+    output
   }
 }
