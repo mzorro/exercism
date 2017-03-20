@@ -11,5 +11,6 @@ object Grains {
   // val total: BigInt = (BigInt(1) << 64) - 1
 
   // for fun
-  val total: BigInt = (square(64).get << 1) - 1
+  // val total: BigInt = (square(64).get << 1) - 1
+  val total: BigInt = (1 to 64).flatMap(square).sum
 }
