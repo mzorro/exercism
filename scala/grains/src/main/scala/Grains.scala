@@ -8,5 +8,8 @@ object Grains {
     else
       None
 
-  val total: BigInt = (BigInt(1) << 64) - 1
+  // val total: BigInt = (BigInt(1) << 64) - 1
+
+  // for fun
+  val total: BigInt = (square(64).get << 1) - 1
 }
