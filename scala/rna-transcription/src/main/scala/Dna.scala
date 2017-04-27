@@ -1,4 +1,4 @@
-import scala.util.Try
+
 
 /**
   * Created by mz on 3/31 031.
@@ -8,7 +8,6 @@ object Dna {
     Map('G' -> 'C', 'C' -> 'G', 'T' -> 'A', 'A' -> 'U')
 
   def toRna(s: String): Option[String] = {
-    val result = s.foldLeft(StringBuilder.newBuilder)((sb, c) => sb.append(dna2RnaMap.getOrElse(c, "")))
-    Try(result.substring(0, s.length)).toOption
+    s.foldLeft(Option(""))((ops, c) => ops.flatMap(s => dna2RnaMap.get(c).map(s + _)))
   }
 }
