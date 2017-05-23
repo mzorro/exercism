@@ -46,10 +46,11 @@ case class Robot(bearing: Bearing, coordinates: (Int, Int)) {
   def turnRight() = Robot(right(bearing), coordinates)
 
   def simulate(instructions: String): Robot =
-    if (instructions.isEmpty) this
-    else instructions.head match {
-      case 'L' => turnLeft simulate instructions.tail
-      case 'R' => turnRight simulate instructions.tail
-      case 'A' => advance simulate instructions.tail
-    }
+    instructions.foldLeft(this)((last, ins) => {
+      ins match {
+        case 'L' => last.turnLeft()
+        case 'R' => last.turnRight()
+        case 'A' => last.advance()
+      }
+    })
 }
