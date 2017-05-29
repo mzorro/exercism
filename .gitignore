@@ -1,3 +1,5 @@
 .idea/
 .keep
 target/
+.gradle
+build
