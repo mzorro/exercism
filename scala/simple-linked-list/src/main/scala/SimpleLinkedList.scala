@@ -14,7 +14,7 @@ trait SimpleLinkedList[T] {
 
 case class LinkedListNode[T](elems: T*) extends SimpleLinkedList[T] with Iterable[T] {
 
-  elems.foldLeft(this)((node, elem) => node add elem)
+  elems.foldLeft(this)(_ add _)
 
   var value: T = _
 
@@ -23,7 +23,7 @@ case class LinkedListNode[T](elems: T*) extends SimpleLinkedList[T] with Iterabl
   override def isEmpty: Boolean = value == null
 
   def add(item: T): LinkedListNode[T] = {
-    if (isEmpty) value = item else next.add(item)
+    if (isEmpty) value = item else next add item
     this
   }
 
