@@ -22,17 +22,17 @@ func hasLetter(s string) bool {
 // Hey should have a comment documenting it.
 func Hey(remark string) string {
 	remark = strings.TrimSpace(remark)
-	if hasLetter(remark) && strings.ToUpper(remark) == remark {
+	switch true {
+	case len(remark) == 0:
+		return "Fine. Be that way!"
+	case hasLetter(remark) && strings.ToUpper(remark) == remark:
 		if strings.HasSuffix(remark, "?") {
 			return "Calm down, I know what I'm doing!"
-		} else {
-			return "Whoa, chill out!"
 		}
-	} else if strings.HasSuffix(remark, "?") {
+		return "Whoa, chill out!"
+	case strings.HasSuffix(remark, "?"):
 		return "Sure."
-	} else if len(remark) == 0 {
-		return "Fine. Be that way!"
-	} else {
+	default:
 		return "Whatever."
 	}
 }
